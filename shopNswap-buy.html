@@ -21,11 +21,24 @@
                     <img src="/shopNswap-images/shopNswapLogo2.svg" alt="">
                 </a>
                 <a href="shopNswap-home.html" class="siteName"><p>shopNswap.</p></a>
-                <a href="#" class="icon1"><i class="fa-solid fa-sign-out-alt"></i><span class="extra-content">Sign Out</span></a>
-                <a href="#" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
-                <a href="#" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
-                <a href="#" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
-                <a href="#" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="#" class="icon1" onclick="showPopup()">
+                    <i class="fa-solid fa-sign-out-alt"></i><span class="extra-content">Sign Out</span>
+                </a>
+                <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+
+                <div class="popup" id="popup">
+                    <i class="fa-solid fa-face-frown fa-shake"></i>
+                    <p>Are you sure you want to sign out?</p>
+                    <div class="popup-buttons">
+                        <button onclick="cancelSignOut()">No</button>
+                        <button onclick="confirmSignOut()">Yes</button>
+                    </div>
+                </div>
+
+                <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
+                <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
+                <a href="shopNswap-heart.html" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
+                <a href="shopNswap-message.html" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                   <i class="fa fa-bars"></i>
                 </a>
@@ -161,8 +174,6 @@
                 <h1>Manage items for sale</h1>
             </button>
         </section>
-        
-        
 
         <footer class="footerCont">
             <div class="footerCont2">
@@ -201,40 +212,40 @@
                 </div>
                 <div class="footerCol">
                     <span>About</span>
-                    <a href="#">
+                    <a href="shopNswap-team.html">
                         <p>About Us</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-underConstruction.html">
                         <p>Delivery Information</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-underConstruction.html">
                         <p>Shipping Rates and Policies</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-underConstruction.html">
                         <p>Privacy Policy</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-tnc.html">
                         <p>Terms and Conditions</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-contactus.html">
                         <p>Contact Us</p>
                     </a>
                 </div>
                 <div class="footerCol">
                     <span>Account</span>
-                    <a href="#">
+                    <a href="shopNswap-profile.html">
                         <p>Account Settings</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-profile.html">
                         <p>Track My Order</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-cart.html">
                         <p>View Cart</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-heart.html">
                         <p>View Heart List</p>
                     </a>
-                    <a href="#">
+                    <a href="shopNswap-cart.html">
                         <p>View Orders</p>
                     </a>
                 </div>
