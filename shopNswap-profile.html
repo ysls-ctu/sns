@@ -37,10 +37,10 @@
                     </div>
                 </div>
 
-                <a href="#" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
+                <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
                 <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
                 <a href="#" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
-                <a href="#" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="shopNswap-message.html" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                   <i class="fa fa-bars"></i>
                 </a>
@@ -124,40 +124,63 @@
                 
             </div>
             <div class="green-div">
-               <div class="statusCont">
-                    <button>ALL</button>
-                    <button>TO PAY</button>
-                    <button>TO SHIP</button>
-                    <button>TO RECEIVE</button>
-                    <button>COMPLETED</button>
-                    <button>CANCELLED</button>
-               </div>
-               <div class="itemsCont">
-                    <div class="storeName">
-                        <p>Store Name</p>
-                        <a href="shopNswap-underConstruction.html">
-                            <div class="visitSeller">
-                                <span><i class="fa-solid fa-store"></i>&nbsp;Visit Shop</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="paCont">
-                        <div class="productArea">
-                            <div class="paCol">
-                                <img src="visams.png" alt="">
-                            </div>
-                            <div class="paCol" id="titleCont">
-                                <p>Product Title</p>
-                                <p>x 1</p>
-                            </div>
-                            <div class="paCol" id="priceCont">
-                                <p>100.00</p>
+                <div class="statusCont">
+                    <button data-section="all">ALL</button>
+                    <button data-section="toPay">TO PAY</button>
+                    <button data-section="toShip">TO SHIP</button>
+                    <button data-section="toReceive">TO RECEIVE</button>
+                    <button data-section="completed">COMPLETED</button>
+                    <button data-section="cancelled">CANCELLED</button>
+                </div>
+                <div class="section-container" data-section="all">
+                    <div class="itemsCont">
+                        <div class="storeName">
+                            <p>Store Name</p>
+                            <a href="shopNswap-underConstruction.html">
+                                <div class="visitSeller">
+                                    <span><i class="fa-solid fa-store"></i>&nbsp;Visit Shop</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="paCont">
+                            <div class="productArea">
+                                <div class="paCol">
+                                    <img src="visams.png" alt="">
+                                </div>
+                                <div class="paCol" id="titleCont">
+                                    <p>Product Title</p>
+                                    <p>x 1</p>
+                                </div>
+                                <div class="paCol" id="priceCont">
+                                    <p>100.00</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        
+
+                        <div class="orderActions">
+                            <button id="csbtn" >Contact Seller</button>
+                            <button>Cancel Order</button>
+                            <p>Total: <b>100.00</b></p>
+        
+                        </div>   
                     </div>
-               </div>
+                </div>
+                <div class="section-container" data-section="toPay">
+                <!-- Content for the "TO PAY" section -->
+                </div>
+                <div class="section-container" data-section="toShip">
+                    <!-- Content for the "TO SHIP" section -->
+                </div>
+                <div class="section-container" data-section="toReceive">
+                    <!-- Content for the "TO RECEIVE" section -->
+                </div>
+                <div class="section-container" data-section="completed">
+                    <!-- Content for the "COMPLETED" section -->
+                </div>
+                <div class="section-container" data-section="cancelled">
+                    <!-- Content for the "CANCELLED" section -->
+                </div>
+
             </div>
         </section>
 
@@ -277,6 +300,61 @@
                 });
                 
             });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var allButton = document.querySelector('.statusCont button[data-section="all"]');
+                var toPayButton = document.querySelector('.statusCont button[data-section="toPay"]');
+                var toShipButton = document.querySelector('.statusCont button[data-section="toShip"]');
+                var toReceiveButton = document.querySelector('.statusCont button[data-section="toReceive"]');
+                var completedButton = document.querySelector('.statusCont button[data-section="completed"]');
+                var cancelledButton = document.querySelector('.statusCont button[data-section="cancelled"]');
+
+                var sections = document.querySelectorAll('.section-container');
+
+                function showSection(sectionToShow) {
+                    sections.forEach(function (section) {
+                        if (section.getAttribute('data-section') === sectionToShow) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                }
+
+                allButton.addEventListener('click', function () {
+                    showSection('all');
+                });
+
+                toPayButton.addEventListener('click', function () {
+                    showSection('toPay');
+                });
+
+                toShipButton.addEventListener('click', function () {
+                    showSection('toShip');
+                });
+
+                toReceiveButton.addEventListener('click', function () {
+                    showSection('toReceive');
+                });
+
+                completedButton.addEventListener('click', function () {
+                    showSection('completed');
+                });
+
+                cancelledButton.addEventListener('click', function () {
+                    showSection('cancelled');
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var csButton = document.getElementById('csbtn');
+
+                csButton.addEventListener('click', function () {
+                    window.location.href = 'shopNswap-message.html';
+                });
+            });
+
+
         </script>
 
     </body>

@@ -40,7 +40,7 @@
                 <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
                 <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
                 <a href="#" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
-                <a href="shopNswap-message.html" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="#" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                   <i class="fa fa-bars"></i>
                 </a>
@@ -94,118 +94,29 @@
             </a>
         </section>
 
-        <section id="searchContainer">
-            <div class="searchBarClass">
-                <input type="text" placeholder="" class="searchBarInput">
-                <a href="#">
-                    <button type="button" class="searchButton"><i class="fa fa-search"></i></button>
-                </a>
+        <section id="messageCont">
+            <div class="chatList" oncl>
+                <div class="chatRow">
+                    <p>1</p>
+                </div>
             </div>
-        </section>
+            <div class="messageList">
+                <div class="messageContents" id="messageContents">
 
-        <section id="categoryContainer">
-            <a href="shopNswap-buy.html">
-                <div class="categoryCont">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <h1>BUY</h1>
                 </div>
-            </a>
-            <a href="shopNswap-rent.html">
-                <div class="categoryCont">
-                    <i class="fas fa-handshake"></i>
-                    <h1>RENT</h1>
-                </div>
-            </a>
-            <a href="shopNswap-sell.html" id="sellLink">
-                <div class="categoryCont">
-                    <i class="fa-solid fa-sack-dollar"></i>
-                    <h1>SELL</h1>
-                </div>
-            </a>
-            <a href="shopNswap-borrow.html">
-                <div class="categoryCont">
-                    <i class="fas fa-money-bill-wave-alt"></i>
-                    <h1>BORROW</h1>
-                </div>
-            </a>
-        </section>
-
-        <section id="slideShow">
-            <div class="slideshow-container">
-                <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=BOOKS">
-                        <img src="/shopNswap-images/slideshow-images/books.svg" style="width:100%">
-                    </a>
-                </div>
-                <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=SUPPLIES">
-                        <img src="/shopNswap-images/slideshow-images/school.svg" style="width:100%">
-                    </a>
-                </div>
-                <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=FOOD">
-                        <img src="/shopNswap-images/slideshow-images/food.svg" style="width:100%">
-                    </a>
-                </div>
-                <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=CLOTHES">
-                        <img src="/shopNswap-images/slideshow-images/clothes.svg" style="width:100%">
-                    </a>
-                </div>
-                <div class="mySlides fade">
-                    <a href="#">
-                        <img src="/shopNswap-images/slideshow-images/laptop.svg" style="width:100%">
-                    </a>
-                </div>
-                <div class="mySlides fade">
-                    <a href="#">
-                        <img src="/shopNswap-images/slideshow-images/discounts.svg" style="width:100%">
-                    </a>
+                <div class="messageInput">
+                    <input type="text" name="" id="messageInput" placeholder="Send your message here">
                 </div>
             </div>
         </section>
 
-        <section id="productHome">
-            <div class="productCont">
-                <img src="/shopNswap-images/AMZLOGO.svg" alt="">
-                <h4>Amazon Website</h4>
-                <p>Amazon Store</p>
-                <span>₱100.00</span>
-                <div class="productOptions">
-                    <div class="iconOpt">
-                        <center>
-                            <p>Add to Cart</p>
-                        </center>
-                    </div>
-                    <div class="iconOpt heart">
-                        <center>
-                            <p>Add to Heart</p>
-                        </center>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="news-letter" class="section-p1 section-m1">
-            <div class="news-letter-container">
-                <div class="news-text">
-                    <h4>Subscribe to our Newsletter</h4>
-                    <p>Get email updates about Technologist deals and<span> <a href="#">special offers</a></span>.</p>
-                </div>
-            </div>
-            <div class="news-letter-container">
-                <form action="#" class="formSub">
-                    <div class="container">
-                        <input type="text" placeholder="Your name" name="name" required>
-                        <input type="text" placeholder="Your email address" name="email" required>
-                        <label><input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter</label>
-                    </div>
-                    <div class="container">
-                        <input type="submit" value="Subscribe">
-                    </div>
-                </form>
-            </div>
-        </section>
+
+
+
+
+
+
 
         <footer class="footerCont">
             <div class="footerCont2">
@@ -301,42 +212,54 @@
             }
 
             document.addEventListener('DOMContentLoaded', function () {
-                const searchBarInput = document.querySelector('.searchBarInput');
-                const keywords = ['School Supplies', 'Foods and Beverages', 'Secondhand Laptop', 'Academic Textbooks', 'Men and Women\'s Apparel',
-                'Snacks', 'Smart Load', 'Stationary Set', 'Electronic and Devices', 'Sports and Recreation'];
-                
-                let index = 0;
-        
-                function updatePlaceholder() {
-                    searchBarInput.setAttribute('placeholder', keywords[index]);
-                    index = (index + 1) % keywords.length;
+                var messageInput = document.getElementById('messageInput');
+                var messageContents = document.getElementById('messageContents');
+
+                messageInput.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' && messageInput.value.trim() !== '') {
+                        // Create a new div element for the message
+                        var newMessageDiv = document.createElement('div');
+                        newMessageDiv.className = 'message';
+
+                        // Create a span for the message content
+                        var messageContentSpan = document.createElement('span');
+                        messageContentSpan.textContent = messageInput.value;
+
+                        // Create a span for the timestamp
+                        var timeStampSpan = document.createElement('span');
+                        timeStampSpan.className = 'timestamp';
+                        timeStampSpan.textContent = getFormattedTimestamp(); // Call a function to get formatted timestamp
+
+                        // Append the message content and timestamp spans to the message div
+                        newMessageDiv.appendChild(messageContentSpan);
+                        newMessageDiv.appendChild(document.createElement('br')); // Add a line break
+                        newMessageDiv.appendChild(timeStampSpan);
+
+                        // Append the new message div to the messageContents
+                        messageContents.appendChild(newMessageDiv);
+
+                        // Clear the input field
+                        messageInput.value = '';
+
+                        // Scroll to the bottom
+                        messageContents.scrollTop = messageContents.scrollHeight;
+                    }
+                });
+
+                // Function to get formatted timestamp (HH:MM AM/PM format)
+                function getFormattedTimestamp() {
+                    var now = new Date();
+                    var hours = now.getHours();
+                    var minutes = now.getMinutes().toString().padStart(2, '0');
+                    var ampm = hours >= 12 ? 'PM' : 'AM';
+                    hours = hours % 12 || 12;
+                    return hours + ':' + minutes + ' ' + ampm;
                 }
-                updatePlaceholder();
-                setInterval(updatePlaceholder, 3000);
             });
 
-            let slideIndex = 0;
-            showSlides();
 
-            function showSlides() {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) {
-                    slideIndex = 1;
-                }
-                slides[slideIndex - 1].style.display = "block";
-                slides[slideIndex - 1].classList.add("fade"); // Add fade class
-                setTimeout(function () {
-                    slides[slideIndex - 1].classList.remove("fade"); // Remove fade class after transition
-                }, 1500);
-                setTimeout(showSlides, 4000); // Change image every 4 seconds
-            }
 
-            
+
 
 
 

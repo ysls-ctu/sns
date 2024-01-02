@@ -1425,6 +1425,140 @@ a {
     padding: 1%;
 }
 
+.orderActions {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff0cf;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: row;
+}
+
+.orderActions p {
+    float: right;
+    width: 45%;
+    text-align: right;
+}
+
+.orderActions button {
+    padding: 10px;
+    width: 20%;
+    margin: 5px;
+    border-radius: 15px;
+    border: none;
+    background-color: aliceblue;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+    width: 25%;
+    transition: 0.3s ease;
+}
+
+.orderActions button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.orderActions #csbtn {
+    background-color: rgb(199, 234, 250);
+}
+
+#messageCont {
+    width: 75%;
+    height: 600px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: row;
+}
+
+.chatList {
+    background-color: aliceblue;
+    width: 20%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+    
+}
+
+.messageList {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(208, 233, 255);
+    width: 80%;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    padding: 10px;
+    float: right;
+}
+
+.chatRow {
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    border: solid rgb(194, 194, 194) 1px;
+    height: 8%;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+.chatRow p {
+    margin: 0; 
+}
+
+.messageInput {
+    margin-top: auto;
+    text-align: center;
+}
+
+.messageContents {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.messageList input[type=text] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    height: 100%;
+}
+
+.messageContents .message {
+    background-color: white; 
+    color: rgb(73, 73, 73); 
+    max-width: 300px;
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 10px; 
+    text-align: right;
+    align-self: flex-end;
+    word-wrap: break-word;
+}
+
+.timestamp {
+    color: #777;
+    font-size: 0.6em;
+    margin-top: 0;
+}
+
+
+
+
+
+
 
 
 
@@ -1504,6 +1638,14 @@ a {
         width: 95%;
     }
 
+    #messageCont {
+        width: 95%;
+    }
+
+    .chatRow p {
+        text-align: center;
+        font-weight: 800;
+    }
 
 
 }
