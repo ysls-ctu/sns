@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>shopNswap.</title>
+        <link rel="icon" type="image/x-icon" href="shopNswap-images/shopNswapLogo.png">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="shopNswap-login.css">
+        <script src="shopNswap-home.js"></script>
+        
+    </head>
+
+    
+    <body id="loginBody" class="animate">
+        <div class="container">
+            <div class="logo-container">
+                <img src="shopNswap-images/shopNswapLogo2.png" alt="">
+            </div>
+            <form class="form" id="login" onsubmit="validate(event)" method="post">
+                <h1 class="form__title text">
+                    <div class="titleForm"><p>shopNswap.</p></div><br>
+                    <span>Sign In</span>
+                </h1>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Email Address" id="username">
+                    <div class="form__input-error-message" id="usernameError"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" class="form__input" autofocus placeholder="Password" id="password">
+                    <div class="form__input-error-message" id="passwordError"></div>
+                </div>
+    
+                <button class="form__button" type="submit">
+                    <span>Continue</span>
+                </button>
+    
+                <div class="botText">
+                    <p class="form__text">
+                        <a href="shopNswap-underConstructionSignIn.html" class="form__link">Forgot your password?</a>
+                    </p>
+        
+                    <p class="form__text">
+                        <a class="form__link" href="#" id="linkCreateAccount">Don't have an account? Create account</a>
+                    </p>
+                </div>
+            </form>
+    
+            <form class="form form--hidden" id="createAccount" onsubmit="createAccount(event)" method="post" action="sns-registration.php" enctype="multipart/form-data">
+                <h1 class="form__title text">
+                    <div class="titleForm"><p>shopNswap.</p></div><br>
+                </h1>
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
+                    <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Email Address">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="text" id="confirmEmail" class="form__input" autofocus placeholder="Confirm Email Address">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" id="signupPassword" class="form__input" autofocus placeholder="Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" id="confirmPassword" class="form__input" autofocus placeholder="Confirm password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="corUpload">
+                    <p>Upload COR for verification</p>
+                </div>
+                <div class="form__input-group">
+                    <input type="file" id="corFile" accept=".png, .jpg, .jpeg" class="form__input" autofocus accept="image/*" placeholder="Certificate of Registration">
+                    <div class="form__input-error-message"></div>
+                </div>
+        
+                <button onclick="createAccount(event)" class="form__button" type="submit">Submit Information</button>
+                <div class="botText">
+                    <p class="form__text">
+                        <a class="form__link" href="#" id="linkLogin">Already have an account? Sign in</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal" id="termsModal">
+            <div class="modal-content">
+                <h2>Terms and Conditions</h2>
+                <p>Please read and accept the terms and conditions before proceeding.</p>
+                <div class="modal-buttons">
+                    <button onclick="acceptTerms()">Accept</button>
+                    <button onclick="nevermind()">Nevermind</button>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            // Your existing JavaScript code
+        </script>
+    </body>
+
+
+
+
+</html>

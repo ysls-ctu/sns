@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgba(31, 31, 107, 0.5), rgba(31, 31, 107, 0.5)), url(shopNswap-images/AMZLOGO.svg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body #loginBody{
+    --color-primary: #009579;
+    --color-primary-dark: #007f67;
+    --color-secondary: #252c6a;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background-image: linear-gradient(to bottom right, #2e5745, #deffbf);
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    background: rgb(29, 29, 70);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 30px;
+    border-radius: 1000px;
+    width: 80%;
+    margin: auto;
+    background-color: rgb(29, 29, 70);
+}
+
+.container img {
+    width: 100%;
+}
+
+.text {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.icon {
+    width: 50px;
+    display: inline-block;
+    left: 24%;
+    float: left;
+    position: relative;
+    margin: 10px;
+}
+
+.container,
+.form__input,
+.form__button {
+    font: 500 1rem 'Quicksand', sans-serif;
+}
+
+.form--hidden {
+    display: none;
+}
+
+.titleForm p {
+    color: aliceblue;
+    margin-bottom: -30px;
+    margin-top: -20px;
+    font-size: 40px;
+}
+
+.container input[type=text],
+.container input[type=password],
+.container input[type=file] {
+    border-radius: 5px;
+    border: none;
+}
+
+.form__title span {
+    color: aliceblue;
+    font-size: 25px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.form > *:first-child {
+    margin-top: 0;
+}
+
+.form > *:last-child {
+    margin-bottom: 0;
+}
+
+.form__title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form__message {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form__message--success {
+    color: var(--color-success);
+}
+
+.form__message--error {
+    color: var(--color-error);
+}
+
+.form__input-group {
+    margin-bottom: 1rem;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    outline: none;
+    background: rgb(225, 236, 245);
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form__input:focus {
+    border-color: var(--color-primary);
+    background: aliceblue;
+}
+
+.form__input--error {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.form__input-error-message {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-error);
+}
+
+.form__button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: aliceblue;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-primary);
+    transition: 0.3s ease;
+    background-color:#b98a25;
+    border-radius: 5px;
+}
+
+.form__button a {
+    color: #fcfcfc;
+
+}
+
+.form__button:hover {
+    background-color:#c79c3f;
+}
+
+.form__button:active {
+    transform: scale(0.98);
+}
+
+.botText {
+    margin-top: 20px;
+}
+
+.form__text {
+    text-align: center;
+    color: aliceblue;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.form__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+
+.corUpload {
+    color: aliceblue;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    
+}
+
+#loginBody {
+    margin: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-buttons button {
+    width: 30%;
+    margin: 10px;
+    margin-bottom: -20px;
+    margin-top: 30px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #b98a25;
+    color: aliceblue;
+    transition: 0.3s ease;
+}
+
+.modal-buttons button:hover {
+    background-color: #cea03c;
+}
+
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}

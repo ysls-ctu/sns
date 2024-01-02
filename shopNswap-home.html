@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>shopNswap.</title>
+        <link rel="icon" type="image/x-icon" href="shopNswap-images/shopNswapLogo.png">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="shopNswap-home.css">
+        <script src="shopNswap-home.js"></script>
+        
+    </head>
+
+    <body id="bodyCont">
+
+        <section id="header">
+            <div class="topnav" id="myTopnav">
+                <a href="shopNswap-home.html" class="logo">
+                    <img src="/shopNswap-images/shopNswapLogo2.svg" alt="">
+                </a>
+                <a href="shopNswap-home.html" class="siteName"><p>shopNswap.</p></a>
+                <a href="#" class="icon1" onclick="showPopup()">
+                    <i class="fa-solid fa-sign-out-alt"></i><span class="extra-content">Sign Out</span>
+                </a>
+                <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+
+                <div class="popup" id="popup">
+                    <i class="fa-solid fa-face-frown fa-shake"></i>
+                    <p>Are you sure you want to sign out?</p>
+                    <div class="popup-buttons">
+                        <button onclick="cancelSignOut()">No</button>
+                        <button onclick="confirmSignOut()">Yes</button>
+                    </div>
+                </div>
+
+                <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
+                <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
+                <a href="#" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
+                <a href="#" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                  <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="banner">
+            <a href="shopNswap-underConstruction.html" class="container1">
+                <div class="col1">
+                    <i class="fas fa-share"></i>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col2">
+                    <center>
+                        <h3>SHARE & EARN</h3>
+                        <p>up to 10% off</p>
+                    </center>
+                </div>
+            </a>
+            <a href="shopNswap-underConstruction.html" class="container2">
+                <div class="col1">
+                    <i class="fa-solid fa-tags"></i>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col2">
+                    <center>
+                        <h3>GET ₱100 OFF DISCOUNT</h3>
+                        <p>on your first order</p>
+                    </center>
+                </div>
+            </a>
+            <a href="shopNswap-underConstruction.html" class="container2">
+                <div class="col1">
+                    <i class="fa-solid fa-credit-card"></i>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col2">
+                    <center>
+                        <h3>EXCLUSIVE OFFERS</h3>
+                        <p>for bonafide students</p>
+                    </center>
+                </div>
+            </a>
+            <a href="shopNswap-underConstruction.html" class="container2">
+                <div class="col1">
+                    <i class="fa-solid fa-gift"></i>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col2">
+                    <center>
+                        <h3>EXCITING VOUCHERS</h3>
+                        <p>student-friendly offers</p>
+                    </center>
+                </div>
+            </a>
+        </section>
+
+        <section id="searchContainer">
+            <div class="searchBarClass">
+                <input type="text" placeholder="" class="searchBarInput">
+                <a href="#">
+                    <button type="button" class="searchButton"><i class="fa fa-search"></i></button>
+                </a>
+            </div>
+        </section>
+
+        <section id="categoryContainer">
+            <a href="shopNswap-buy.html">
+                <div class="categoryCont">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <h1>BUY</h1>
+                </div>
+            </a>
+            <a href="shopNswap-rent.html">
+                <div class="categoryCont">
+                    <i class="fas fa-handshake"></i>
+                    <h1>RENT</h1>
+                </div>
+            </a>
+            <a href="shopNswap-sell.html" id="sellLink">
+                <div class="categoryCont">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                    <h1>SELL</h1>
+                </div>
+            </a>
+            <a href="shopNswap-borrow.html">
+                <div class="categoryCont">
+                    <i class="fas fa-money-bill-wave-alt"></i>
+                    <h1>BORROW</h1>
+                </div>
+            </a>
+        </section>
+
+        <section id="slideShow">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <a href="shopNswap-buySubCat.html?subCategory=BOOKS">
+                        <img src="/shopNswap-images/slideshow-images/books.svg" style="width:100%">
+                    </a>
+                </div>
+                <div class="mySlides fade">
+                    <a href="shopNswap-buySubCat.html?subCategory=SUPPLIES">
+                        <img src="/shopNswap-images/slideshow-images/school.svg" style="width:100%">
+                    </a>
+                </div>
+                <div class="mySlides fade">
+                    <a href="shopNswap-buySubCat.html?subCategory=FOOD">
+                        <img src="/shopNswap-images/slideshow-images/food.svg" style="width:100%">
+                    </a>
+                </div>
+                <div class="mySlides fade">
+                    <a href="shopNswap-buySubCat.html?subCategory=CLOTHES">
+                        <img src="/shopNswap-images/slideshow-images/clothes.svg" style="width:100%">
+                    </a>
+                </div>
+                <div class="mySlides fade">
+                    <a href="#">
+                        <img src="/shopNswap-images/slideshow-images/laptop.svg" style="width:100%">
+                    </a>
+                </div>
+                <div class="mySlides fade">
+                    <a href="#">
+                        <img src="/shopNswap-images/slideshow-images/discounts.svg" style="width:100%">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="productHome">
+            <div class="productCont">
+                <img src="/shopNswap-images/AMZLOGO.svg" alt="">
+                <h4>Amazon Website</h4>
+                <p>Amazon Store</p>
+                <span>₱100.00</span>
+                <div class="productOptions">
+                    <div class="iconOpt">
+                        <center>
+                            <p>Add to Cart</p>
+                        </center>
+                    </div>
+                    <div class="iconOpt heart">
+                        <center>
+                            <p>Add to Heart</p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news-letter" class="section-p1 section-m1">
+            <div class="news-letter-container">
+                <div class="news-text">
+                    <h4>Subscribe to our Newsletter</h4>
+                    <p>Get email updates about Technologist deals and<span> <a href="#">special offers</a></span>.</p>
+                </div>
+            </div>
+            <div class="news-letter-container">
+                <form action="#" class="formSub">
+                    <div class="container">
+                        <input type="text" placeholder="Your name" name="name" required>
+                        <input type="text" placeholder="Your email address" name="email" required>
+                        <label><input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter</label>
+                    </div>
+                    <div class="container">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footerCont">
+            <div class="footerCont2">
+                <div class="footerCol">
+                    <a href="shopNswap-home.html">
+                        <div class="footerColHead">
+                            <img src="shopNswap-images/shopNswapLogo2.svg" alt="">
+                            <p>shopNswap.</p>
+                        </div>
+                    </a><br>
+                    <a href="https://shorturl.at/pN028">
+                        <p>Corner M.J. Cuenco Ave. & R. Palma St.,Cebu City, Philippines, 6000</p>
+                    </a>
+                    <p>123-1234</p>
+                    <a href="https://www.google.com/gmail/about/">
+                        <p>cs@shopnswap.com</p>
+                    </a>
+                    <span>Follow Us</span>
+                    <div class="footerColHead">
+                        <a href="https://www.facebook.com/edsel.lucanas">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.twitter.com/">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.pinterest.com/">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </a>
+                        <a href="https://www.youtube.com/">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footerCol">
+                    <span>About</span>
+                    <a href="#">
+                        <p>About Us</p>
+                    </a>
+                    <a href="#">
+                        <p>Delivery Information</p>
+                    </a>
+                    <a href="#">
+                        <p>Shipping Rates and Policies</p>
+                    </a>
+                    <a href="#">
+                        <p>Privacy Policy</p>
+                    </a>
+                    <a href="#">
+                        <p>Terms and Conditions</p>
+                    </a>
+                    <a href="#">
+                        <p>Contact Us</p>
+                    </a>
+                </div>
+                <div class="footerCol">
+                    <span>Account</span>
+                    <a href="#">
+                        <p>Account Settings</p>
+                    </a>
+                    <a href="#">
+                        <p>Track My Order</p>
+                    </a>
+                    <a href="#">
+                        <p>View Cart</p>
+                    </a>
+                    <a href="#">
+                        <p>View Heart List</p>
+                    </a>
+                    <a href="#">
+                        <p>View Orders</p>
+                    </a>
+                </div>
+            </div>
+            <div class="footerCont2">
+                <a href="#" class="backTop">Back to top&nbsp;&nbsp;<i class="fa-solid fa-arrow-up"></i></a>
+                <div class="footDesign">
+                    
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function toggleMenu() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const searchBarInput = document.querySelector('.searchBarInput');
+                const keywords = ['School Supplies', 'Foods and Beverages', 'Secondhand Laptop', 'Academic Textbooks', 'Men and Women\'s Apparel',
+                'Snacks', 'Smart Load', 'Stationary Set', 'Electronic and Devices', 'Sports and Recreation'];
+                
+                let index = 0;
+        
+                function updatePlaceholder() {
+                    searchBarInput.setAttribute('placeholder', keywords[index]);
+                    index = (index + 1) % keywords.length;
+                }
+                updatePlaceholder();
+                setInterval(updatePlaceholder, 3000);
+            });
+
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1;
+                }
+                slides[slideIndex - 1].style.display = "block";
+                slides[slideIndex - 1].classList.add("fade"); // Add fade class
+                setTimeout(function () {
+                    slides[slideIndex - 1].classList.remove("fade"); // Remove fade class after transition
+                }, 1500);
+                setTimeout(showSlides, 4000); // Change image every 4 seconds
+            }
+
+            
+
+
+
+        </script>
+
+    </body>
+    
+</html>
