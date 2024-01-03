@@ -37,10 +37,10 @@
                     </div>
                 </div>
 
-                <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
-                <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
-                <a href="shopNswap-heart.html" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
-                <a href="shopNswap-message.html" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="shopNswap-profile.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
+                <a href="shopNswap-cart.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
+                <a href="shopNswap-heart.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
+                <a href="shopNswap-message.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                   <i class="fa fa-bars"></i>
                 </a>
@@ -48,7 +48,7 @@
         </section>
 
         <section id="banner">
-            <a href="shopNswap-underConstruction.html" class="container1">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container1">
                 <div class="col1">
                     <i class="fas fa-share"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -59,7 +59,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-tags"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -70,7 +70,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-credit-card"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -81,7 +81,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-gift"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -97,32 +97,32 @@
         <section id="searchContainer">
             <div class="searchBarClass">
                 <input type="text" placeholder="" class="searchBarInput">
-                <a href="#">
+                <a href="shopNswap-search..php?userID=<?php echo $userID; ?>">
                     <button type="button" class="searchButton"><i class="fa fa-search"></i></button>
                 </a>
             </div>
         </section>
 
         <section id="categoryContainer">
-            <a href="shopNswap-buy.html">
+            <a href="shopNswap-buy.php?userID=<?php echo $userID; ?>">
                 <div class="categoryCont">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <h1>BUY</h1>
                 </div>
             </a>
-            <a href="shopNswap-rent.html">
+            <a href="shopNswap-rent.php?userID=<?php echo $userID; ?>">
                 <div class="categoryCont">
                     <i class="fas fa-handshake"></i>
                     <h1>RENT</h1>
                 </div>
             </a>
-            <a href="shopNswap-sell.html" id="sellLink">
+            <a href="shopNswap-sell.php?userID=<?php echo $userID; ?>" id="sellLink">
                 <div class="categoryCont">
                     <i class="fa-solid fa-sack-dollar"></i>
                     <h1>SELL</h1>
                 </div>
             </a>
-            <a href="shopNswap-borrow.html">
+            <a href="shopNswap-borrow.php?userID=<?php echo $userID; ?>">
                 <div class="categoryCont">
                     <i class="fas fa-money-bill-wave-alt"></i>
                     <h1>BORROW</h1>
@@ -133,22 +133,22 @@
         <section id="slideShow">
             <div class="slideshow-container">
                 <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=BOOKS">
+                    <a href="shopNswap-buySubCat.php?userID=<?php echo $userID; ?>&subCategory=BOOKS">
                         <img src="/shopNswap-images/slideshow-images/books.svg" style="width:100%">
                     </a>
                 </div>
                 <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=SUPPLIES">
+                    <a href="shopNswap-buySubCat.php?userID=<?php echo $userID; ?>&subCategory=SUPPLIES">
                         <img src="/shopNswap-images/slideshow-images/school.svg" style="width:100%">
                     </a>
                 </div>
                 <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=FOOD">
+                    <a href="shopNswap-buySubCat.php?userID=<?php echo $userID; ?>&subCategory=FOOD">
                         <img src="/shopNswap-images/slideshow-images/food.svg" style="width:100%">
                     </a>
                 </div>
                 <div class="mySlides fade">
-                    <a href="shopNswap-buySubCat.html?subCategory=CLOTHES">
+                    <a href="shopNswap-buySubCat.php?userID=<?php echo $userID; ?>&subCategory=CLOTHES">
                         <img src="/shopNswap-images/slideshow-images/clothes.svg" style="width:100%">
                     </a>
                 </div>
@@ -166,24 +166,27 @@
         </section>
 
         <section id="productHome">
-            <div class="productCont">
-                <img src="/shopNswap-images/AMZLOGO.svg" alt="">
-                <h4>Amazon Website</h4>
-                <p>Amazon Store</p>
-                <span>₱100.00</span>
-                <div class="productOptions">
-                    <div class="iconOpt">
-                        <center>
-                            <p>Add to Cart</p>
-                        </center>
-                    </div>
-                    <div class="iconOpt heart">
-                        <center>
-                            <p>Add to Heart</p>
-                        </center>
-                    </div>
-                </div>
-            </div>
+            <!--
+            <?php
+                include '/php/fetchProducts.php';
+
+                // Use the function to fetch products
+                $products = fetchProductsFromDatabase();
+
+                // Loop through each product and generate the HTML
+                foreach ($products as $product) {
+                    echo '<div class="productCont">';
+                    echo '<img src="' . $product['prod_img'] . '" alt="">';
+                    echo '<h4>' . $product['prod_name'] . '</h4>';
+                    echo '<p>' . $product['prod_seller'] . '</p>';
+                    echo '<span>₱' . $product['prod_price'] . '</span>';
+                    echo '<div class="productOptions">';
+                    echo '<div class="iconOpt" onclick="addToCart(' . $product['prod_id'] . ')"><center><p>Add to Cart</p></center></div>';
+                    echo '<div class="iconOpt heart" onclick="addToHeart(' . $product['prod_id'] . ')"><center><p>Add to Heart</p></center></div>';
+                    echo '</div></div>';
+                }
+            ?>
+            -->
         </section>
 
         <section id="news-letter" class="section-p1 section-m1">
@@ -290,16 +293,11 @@
             </div>
         </footer>
 
+        <script src="/js/responsiveHeader.js"></script>
+        <script src="/js/slideshow.js"></script>
+        <script src="/js/signout.js"></script>
+        <script src="/js/addtoCartHeart.js"></script>
         <script>
-            function toggleMenu() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            }
-
             document.addEventListener('DOMContentLoaded', function () {
                 const searchBarInput = document.querySelector('.searchBarInput');
                 const keywords = ['School Supplies', 'Foods and Beverages', 'Secondhand Laptop', 'Academic Textbooks', 'Men and Women\'s Apparel',
@@ -314,32 +312,6 @@
                 updatePlaceholder();
                 setInterval(updatePlaceholder, 3000);
             });
-
-            let slideIndex = 0;
-            showSlides();
-
-            function showSlides() {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) {
-                    slideIndex = 1;
-                }
-                slides[slideIndex - 1].style.display = "block";
-                slides[slideIndex - 1].classList.add("fade"); // Add fade class
-                setTimeout(function () {
-                    slides[slideIndex - 1].classList.remove("fade"); // Remove fade class after transition
-                }, 1500);
-                setTimeout(showSlides, 4000); // Change image every 4 seconds
-            }
-
-            
-
-
-
         </script>
 
     </body>

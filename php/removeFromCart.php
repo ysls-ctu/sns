@@ -1,0 +1,38 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $userId = $_SESSION['user']['userID'];
+    $productId = $_POST['productId'];
+
+    // Database connection details
+    $host = '127.0.0.1';
+    $user = 'root';
+    $pass = '';
+    $dbname = 'sns';
+
+    // Establish a connection to the database
+    $conn = new mysqli($host, $user, $pass, $dbname);
+
+    // Check for a successful connection
+    if ($conn->connect_error) {
+        $response = array('status' => 'error', 'message' => 'Database connection failed');
+        echo json_encode($response);
+        die();
+    }
+
+    // Remove product from the cart_tbl
+    $deleteQuery = "DELETE FROM cart_tbl WHERE userId = ? AND productId = ?";
+    $deleteStmt = $conn->prepare($deleteQuery);
+    $deleteStmt->bind_param("ii", $userId, $productId);
+    $deleteStmt->execute();
+    $deleteStmt->close();
+    $conn->close();
+
+    $response = array('status' => 'success', 'message' => 'Product removed from cart');
+    echo json_encode($response);
+} else {
+    $response = array('status' => 'error', 'message' => 'User not logged in');
+    echo json_encode($response);
+}
+?>

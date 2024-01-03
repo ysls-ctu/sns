@@ -37,10 +37,10 @@
                     </div>
                 </div>
 
-                <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
-                <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
-                <a href="shopNswap-heart.html" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
-                <a href="shopNswap-message.html" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="shopNswap-profile.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
+                <a href="shopNswap-cart.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
+                <a href="shopNswap-heart.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
+                <a href="shopNswap-message.php?userID=<?php echo $userID; ?>" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                   <i class="fa fa-bars"></i>
                 </a>
@@ -48,7 +48,7 @@
         </section>
 
         <section id="banner">
-            <a href="shopNswap-underConstruction.html" class="container1">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container1">
                 <div class="col1">
                     <i class="fas fa-share"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -59,7 +59,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-tags"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -70,7 +70,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-credit-card"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -81,7 +81,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo $userID; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-gift"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -100,40 +100,36 @@
                 <span>Select All</span>
             </div>
             <div class="cartItems">
-                <div id="cartContainer2">
-                    <div class="categoryContCartCheck">
-                        <input type="checkbox">
-                    </div>
-                    <div class="categoryContCartImg">
-                        <img src="square.jpg" alt="">
-                    </div>
-                    <div class="categoryContCartDet">
-                        <center>
-                            <h4>PRODUCT NAME</h4>
-                            <p>SELLER NAME</p>
-                        </center>
-                    </div>
-                    <div class="categoryContCartPrice">
-                        <center>
-                            <p>₱100</p>
-                        </center>
-                    </div>
-                    <div class="categoryContCartX">
-                        <center>
-                            <h5>X</h5>
-                        </center>
-                    </div>
-                    <div class="categoryContCartQty">
-                        <center>
-                        <button><i class="fa-solid fa-minus"></i></button>
-                        <span>{0}</span>
-                        <button><i class="fa-solid fa-plus"></i></button>
-                        </center>
-                    </div>
-                    <div class="categoryContCartDelete">
-                        <center><i class="fa-solid fa-trash"></i></center>
-                    </div>
-                </div>
+                <!--
+                    <?php
+                        include '/php/fetchCartItems.php'; // Include the PHP script to fetch cart items
+
+                        // Use the function to fetch cart items
+                        $cartItems = fetchCartItems();
+
+                        // Loop through each cart item and generate the HTML
+                        foreach ($cartItems as $cartItem) {
+                            echo '<div class="categoryContCart" data-product-id="' . $cartItem['productId'] . '">';
+                            echo '<div class="categoryContCartCheck"><input type="checkbox"></div>';
+                            echo '<div class="categoryContCartImg"><img src="' . $cartItem['prod_img'] . '" alt=""></div>';
+                            echo '<div class="categoryContCartDet">';
+                            echo '<center><h4>' . $cartItem['prod_name'] . '</h4>';
+                            echo '<p>' . $cartItem['prod_seller'] . '</p></center>';
+                            echo '</div>';
+                            echo '<div class="categoryContCartPrice"><center><p>₱' . $cartItem['prod_price'] . '</p></center></div>';
+                            echo '<div class="categoryContCartX"><center><h5>X</h5></center></div>';
+                            echo '<div class="categoryContCartQty">';
+                            echo '<center>';
+                            echo '<button onclick="updateQty(' . $cartItem['productId'] . ', -1)"><i class="fa-solid fa-minus"></i></button>';
+                            echo '<span>' . $cartItem['quantity'] . '</span>';
+                            echo '<button onclick="updateQty(' . $cartItem['productId'] . ', 1)"><i class="fa-solid fa-plus"></i></button>';
+                            echo '</center>';
+                            echo '</div>';
+                            echo '<div class="categoryContCartDelete"><center><i class="fa-solid fa-trash" onclick="removeFromCart(' . $cartItem['productId'] . ')"></i></center></div>';
+                            echo '</div>';
+                        }
+                        ?>
+                -->
             </div>
         </section>
 
@@ -278,16 +274,9 @@
             </div>
         </footer>
 
-        <script>
-            function toggleMenu() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            }
-        </script>
+        <script src="/js/responsiveHeader.js"></script>
+        <script src="/js/signout.js"></script>
+        <script src="/js/updateRemoveCart.js"></script>
         </body>
 
 
