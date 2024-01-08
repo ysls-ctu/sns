@@ -144,7 +144,7 @@
                     echo '<p>' . $rent['RENT_USER'] . '</p>';
                     
                     echo '<div class="$rent">';
-                    echo '<div class="iconOpt" onclick="addToCart(' . $rent['PROD_ID'] . ')"><center><p>Send Rental Request</p></center></div>';
+                    echo '<div class="iconOpt" onclick="addToCart(' . $rent['USER_ID'] . ')"><center><p>Send Rental Request</p></center></div>';
                     echo '</div></div>';
                 }
                 
