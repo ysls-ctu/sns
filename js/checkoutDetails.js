@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ... Your existing code ...
 
     // Add event listener to the "Proceed to Checkout" button
     document.getElementById('proceedCheckoutBtn').addEventListener('click', function() {
         // Gather information about selected items, total amount, etc.
 
-        // For example, you can create an array to store information about selected items
         var selectedItems = [];
 
         var checkboxes = document.querySelectorAll('.cartItemCheckbox:checked');
