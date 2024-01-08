@@ -21,5 +21,5 @@ function cancelSignOut() {
 
 function confirmSignOut() {
     var userData = null; 
-    window.location.href = 'shopNswap-login.html';
+    window.location.href = 'shopNswap-login.php';
 }

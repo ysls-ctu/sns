@@ -1,47 +1,41 @@
 <?php
-    $host = '127.0.0.1';
-    $user = 'root';
-    $pass = '';
-    $dbname = 'sns';
-    $conn = new mysqli($host, $user, $pass, $dbname);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+ob_start();
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$host = '127.0.0.1';
+$user = 'root';
+$pass = '';
+$dbname = 'db_shopnswap';
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signupUsername']) && isset($_POST['signupPassword']) && isset($_FILES['corFile'])) {
-        // Validate user input
-        $username = $_POST['signupUsername'];
-        $password = $_POST['signupPassword'];
-        $confirmEmail = $_POST['confirmEmail'];
-        $confirmPassword = $_POST['confirmPassword'];
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-        if ($username != $confirmEmail) {
-            echo '<script>alert("Email addresses do not match.");</script>';
-        } elseif ($password != $confirmPassword) {
-            echo '<script>alert("Passwords do not match.");</script>';
-        } else {
-            // Hash the password
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+// Check if the request is POST and if email and password are set
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signupUsername']) && isset($_POST['signupPassword'])) {
+    $email = $_POST['signupUsername'];
+    $password = $_POST['signupPassword'];
 
-            // Upload and validate the COR file (you may want to add more validation here)
-            $corFileName = $_FILES['corFile']['name'];
-            $corTempName = $_FILES['corFile']['tmp_name'];
-            $corFilePath = "cor_uploads/" . $corFileName;
+    // Hash the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            move_uploaded_file($corTempName, $corFilePath);
+    // Get the current timestamp
+    $registrationDate = date('Y-m-d H:i:s');
 
-            // Insert user data into the database
-            $stmt = $conn->prepare("INSERT INTO user_tbl (userEmail, userPassword, corFilePath) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $username, $hashedPassword, $corFilePath);
-            $stmt->execute();
-            $stmt->close();
+    // Insert user data into the database
+    $stmt = $conn->prepare("INSERT INTO user_tbl (USER_EMAIL, USER_PASS, USER_REGDATE) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $hashedPassword, $registrationDate);
+    $stmt->execute();
+    $stmt->close();
 
-            // Redirect to the login page
-            header("Location: shopNswap-login.php");
-            exit();
-        }
-    }
+    // Set a success response
+    $response = array('status' => 'success', 'message' => 'Account created successfully.');
+    echo json_encode($response);
+}
 
-    $conn->close();
+$conn->close();
 ?>

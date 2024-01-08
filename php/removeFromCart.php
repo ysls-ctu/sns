@@ -2,14 +2,14 @@
 session_start();
 
 if (isset($_SESSION['user'])) {
-    $userId = $_SESSION['user']['userID'];
+    $userId = $_SESSION['user']['USER_ID'];
     $productId = $_POST['productId'];
 
     // Database connection details
     $host = '127.0.0.1';
     $user = 'root';
     $pass = '';
-    $dbname = 'sns';
+    $dbname = 'db_shopNswap';
 
     // Establish a connection to the database
     $conn = new mysqli($host, $user, $pass, $dbname);
@@ -22,7 +22,7 @@ if (isset($_SESSION['user'])) {
     }
 
     // Remove product from the cart_tbl
-    $deleteQuery = "DELETE FROM cart_tbl WHERE userId = ? AND productId = ?";
+    $deleteQuery = "DELETE FROM cart_tbl WHERE USER_ID = ? AND PROD_ID = ?";
     $deleteStmt = $conn->prepare($deleteQuery);
     $deleteStmt->bind_param("ii", $userId, $productId);
     $deleteStmt->execute();

@@ -2,22 +2,22 @@
 function addToCart(productId) {
     // Use AJAX to send a request to addToCart.php
     $.ajax({
-        url: 'addToCart.php',
+        url: 'php/addToCart.php',
         type: 'POST',
         data: { productId: productId },
         dataType: 'json',
         success: function (response) {
             if (response.status === 'success') {
-                console.log(response.message);
-                alert('Product added to cart');
+                // Display an alert for success messages
+                alert(response.message);
             } else {
                 console.error(response.message);
-                // Implement logic to handle errors
             }
         },
-        error: function () {
+        error: function (jqXHR, textStatus, errorThrown) {
             console.error('An error occurred while processing the request.');
-            // Implement logic to handle errors
+            console.error('Status: ' + textStatus);
+            console.error('Error thrown: ' + errorThrown);
         }
     });
 }
@@ -26,22 +26,22 @@ function addToCart(productId) {
 function addToHeart(productId) {
     // Use AJAX to send a request to addToHeart.php
     $.ajax({
-        url: 'addToHeart.php',
+        url: 'php/addToHeart.php',
         type: 'POST',
         data: { productId: productId },
-        dataType: 'json',
+        dataType: 'json', // Specify the expected data type
         success: function (response) {
             if (response.status === 'success') {
                 console.log(response.message);
                 alert('Product added to heart list!');
-            } else {
+            } else if (response.status === 'error') {
                 console.error(response.message);
-                // Implement logic to handle errors
+                alert('Error: ' + response.message);
             }
         },
         error: function () {
             console.error('An error occurred while processing the request.');
-            // Implement logic to handle errors
         }
     });
 }
+

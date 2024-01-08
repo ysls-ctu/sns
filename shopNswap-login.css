@@ -267,7 +267,6 @@ body #loginBody{
     background-color: #cea03c;
 }
 
-
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)} 
     to {-webkit-transform: scale(1)}

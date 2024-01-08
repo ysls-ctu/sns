@@ -264,6 +264,9 @@ body {
     display: flex;
     max-width: 200px;
     min-width: 200px;
+    min-height: 300px;
+    max-height: 300px;
+    border: solid #ccc 1px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -272,6 +275,7 @@ body {
     padding: 20px;
     border-radius: 3px;
     transition: 0.3s ease;
+    text-align: center;
 }
 
 .productCont:hover {
@@ -279,9 +283,7 @@ body {
 }
 
 .productCont img {
-    width: 50%;
-    height: 100px;
-    padding: 10px;
+    width: 100px;
     margin-bottom: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
@@ -838,7 +840,7 @@ a {
     flex-direction: row;
     justify-content: center; 
     align-items: center;
-    width: 100%; 
+    width: 800px; 
     background-color: aliceblue;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -877,6 +879,12 @@ a {
 .categoryContCartDet {
     max-width: 30%;
     min-width: 30%;
+}
+
+#cartContainer2 h4,
+#cartContainer2 p {
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .categoryContCartPrice, .categoryContCartX,  .categoryContCartQty{
@@ -952,7 +960,7 @@ a {
 }
 
 .categoryContCart:hover {
-    background-color: #cfa64e;
+    background-color: red;
 }
 
 #cartContainer2 img {
@@ -1232,7 +1240,6 @@ a {
 #profileCont {
     width: 80%;
     margin: 0 auto;
-    border: 1px solid green;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1320,7 +1327,6 @@ a {
 .green-div {
     flex: 0 0 calc(70% - 10px); /* 70% minus margins */
     min-width: 330px;
-    border: solid blue 1px;
 }
 
 .statusCont {
@@ -1417,7 +1423,17 @@ a {
 }
 
 #priceCont {
-    text-align: right; /* Align text to the right */
+    text-align: center; /* Align text to the right */
+}
+
+#receiveButton {
+    text-align: right;
+}
+
+#receiveButton button {
+    padding: 5px;
+    background-color: rgb(27, 27, 85);
+    color: aliceblue;
 }
 
 .paCol img {
@@ -1554,6 +1570,255 @@ a {
     margin-top: 0;
 }
 
+/*start*/
+/* Style for the overlay */
+.overlayAddress {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Updated Style for the modal */
+.modalAddress {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    position: absolute; /* Change to absolute */
+    top: 50%; /* Add top: 50% to center vertically */
+    left: 50%; /* Add left: 50% to center horizontally */
+    transform: translate(-50%, -50%); /* Center the modal */
+    z-index: 2; /* Increase z-index */
+}
+
+.modalAddress p {
+    margin-bottom: 5px;;
+}
+
+/* Style for the button */
+.modalAddress button {
+    width: 50%; /* Adjust width as needed */
+    padding: 10px;
+    background-color: rgb(29, 29, 70); /* Add a background color */
+    color: aliceblue; /* Add text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Style for the close button */
+.closeAddress {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 3; /* Make sure the close button is above the modal */
+}
+
+/* Style for the trigger button */
+#openModalButton {
+    cursor: pointer;
+}
+#addressTextarea {
+    max-width: 100%;
+    max-height: 80%;
+    min-width: 100%;
+    padding: 10px;
+}
+
+
+
+.orderPlacePopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+}
+
+.orderPlacePopup p {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.orderPlacePopup button {
+    padding: 10px;
+    margin-top: 20px;
+    background-color: rgb(29, 29, 70);
+    color: aliceblue;
+    font-weight: 500;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the transparency as needed */
+    z-index: 999; /* Should be less than the z-index of the popup */
+}
+
+.opCont.show-popup .overlay {
+    display: block;
+}
+
+.opCont.show-popup .orderPlacePopup {
+    display: block;
+}
+
+.overlayPop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.receivedCont {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 2;
+    border-radius: 5px;
+}
+.receivedReviewPop {
+    text-align: center;
+}
+
+.receivedReviewPop p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#rating {
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+#comment {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.receivedReviewPop button {
+    background-color: rgb(29, 29, 70);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* Add your CSS styles for modal and overlay here */
+.overlayBuy {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modalBuy {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    z-index: 1000;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.modalBuy form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modalBuy label {
+    margin-bottom: 8px;
+}
+
+.modalBuy input,
+.modalBuy select {
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modalBuy button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modalBuy button:hover {
+    background-color: #45a049;
+}
+
+.modalBuy button,
+.modalBuy [type="submit"] {
+    font-size: 16px;
+}
+
+.modalBuy [type="file"] {
+    margin-top: 8px;
+}
+
+.modalBuy button:last-child {
+    background-color: #f44336;
+    margin-top: 8px;
+}
+
+
+
+
+
 
 
 
@@ -1646,8 +1911,10 @@ a {
         text-align: center;
         font-weight: 800;
     }
-
-
+    .modalAddress {
+        width: 90%;
+    }
+    
 }
 
 @media screen and (max-width: 270px) {
