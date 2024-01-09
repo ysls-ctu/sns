@@ -117,10 +117,7 @@ ini_set('display_errors', 1);
                         echo '<div id="cartContainer2" class="categoryContCart" data-product-id="' . $cartItem['PROD_ID'] . '">';
                         echo '  <div class="categoryContCartCheck"><input type="checkbox" class="cartItemCheckbox" data-price="' . $cartItem['PROD_PRICE'] . '"></div>';
 
-                        // Check if the 'PROD_IMAGE' key exists before using it
-                        if (isset($cartItem['PROD_IMAGE'])) {
-                            echo '  <div class="categoryContCartImg"><img src="data:image/jpg;base64,' . base64_encode($cartItem['PROD_IMAGE']) . '" alt=""></div>';
-                        }
+                        echo '<div class="categoryContCartImg"><img src="php/' . $cartItem['PROD_IMAGE'] . '" alt=""></div>';
 
                         echo '  <div class="categoryContCartDet">';
                         echo '    <center>';
@@ -324,7 +321,7 @@ ini_set('display_errors', 1);
         <script src="js/responsiveHeader.js"></script>
         <script src="js/signout.js"></script>
         <script src="js/updateRemoveCart.js"></script>
-        <script src="js/editAddressPopupjs"></script>
+        <script src="js/editAddressPopup.js"></script>
         <script src="js/updateAddress.js"></script>
         <script src="js/checkOutTotal.js"></script>
         <script src="js/checkOutDetails.js"></script>

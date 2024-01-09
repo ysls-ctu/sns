@@ -199,8 +199,7 @@ if (isset($_SESSION['user'])) {
                 // Loop through each product and generate the HTML
                 foreach ($products as $product) {
                     echo '<div class="productCont">';
-                    // Display the image using base64 encoding
-                    echo '<img src="' . $product['PROD_IMAGE'] . '" alt="">';                    
+                    echo '<img src="php/' . $product['PROD_IMAGE'] . '" alt="">';                   
                     echo '<h4>' . $product['PROD_NAME'] . '</h4>';
                     echo '<p>' . $product['PROD_SELLER'] . '</p>';
                     echo '<span>₱' . $product['PROD_PRICE'] . '</span>';

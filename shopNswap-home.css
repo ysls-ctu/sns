@@ -284,6 +284,7 @@ body {
 
 .productCont img {
     width: 100px;
+    height: 120px;
     margin-bottom: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
@@ -870,10 +871,13 @@ a {
 .categoryContCartImg {
     max-width: 10%;
     min-width: 10%;
+    
 }
 
 .categoryContCartImg img {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06); 
+    max-height: 10%;
+    min-height: 10%;
 }
 
 .categoryContCartDet {

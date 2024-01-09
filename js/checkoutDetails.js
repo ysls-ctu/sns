@@ -1,176 +1,180 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // ... Your existing code ...
+document.addEventListener('DOMContentLoaded', function () {
+    var proceedCheckoutBtn = document.getElementById('proceedCheckoutBtn');
+    var placeOrderButton; // Declare the placeOrderButton variable
 
-    // Add event listener to the "Proceed to Checkout" button
-    document.getElementById('proceedCheckoutBtn').addEventListener('click', function() {
-        // Gather information about selected items, total amount, etc.
-
-        // For example, you can create an array to store information about selected items
+    proceedCheckoutBtn.addEventListener('click', function () {
         var selectedItems = [];
-
         var checkboxes = document.querySelectorAll('.cartItemCheckbox:checked');
+
         checkboxes.forEach(function (checkbox) {
             var cartItemContainer = checkbox.closest('.categoryContCart');
             var productName = cartItemContainer.querySelector('.categoryContCartDet h4').textContent;
             var quantity = cartItemContainer.querySelector('.categoryContCartQty span').textContent;
             var price = parseFloat(checkbox.getAttribute('data-price'));
+            var productId = checkbox.getAttribute('data-product-id'); // Adjust this line based on your HTML
+        
             var totalPrice = price * quantity;
-
+        
             // Push the information to the selectedItems array
             selectedItems.push({
                 productName: productName,
                 quantity: quantity,
-                totalPrice: totalPrice.toFixed(2) // Assuming you want two decimal places
+                totalPrice: totalPrice.toFixed(2),
+                productId: productId // Include the product ID
             });
         });
+        
 
-        // Get other information like total amount, delivery fee, delivery address, and estimated delivery date
         var totalAmount = parseFloat(document.getElementById('totalToPay').textContent) || 0;
-        var deliveryFee = parseFloat(document.getElementById('deliveryFee').textContent) || 0; // Replace with your actual element
+        var deliveryFee = parseFloat(document.getElementById('deliveryFee').textContent) || 0;
         var deliveryAddress = document.querySelector('.addressDisp p').textContent;
-        var today = new Date();
 
-        // Add one day to the current date
-        var estimatedDeliveryDate = new Date(today);
-        estimatedDeliveryDate.setDate(today.getDate() + 1);
-
-        var formattedEstimatedDeliveryDate = estimatedDeliveryDate.toDateString();
+        // Use FormData to properly serialize the data
+        var formData = new FormData();
+        formData.append('selectedItems', JSON.stringify(selectedItems));
+        formData.append('totalAmount', totalAmount);
+        formData.append('deliveryAddress', deliveryAddress);
 
         // Populate the content of the orderPlacePopup modal
-        populateOrderPlacePopup(selectedItems, totalAmount, deliveryFee, deliveryAddress, estimatedDeliveryDate);
+        populateOrderPlacePopup(selectedItems, totalAmount, deliveryFee, deliveryAddress);
 
         // Show the orderPlacePopup modal and overlay
         var opCont = document.querySelector('.opCont');
         opCont.classList.add('show-popup');
-    
-    });
-});
-function closeOrderPlacePopup() {
-    // Hide the overlay and popup by removing the 'show-popup' class from the .opCont element
-    var opCont = document.querySelector('.opCont');
-    opCont.classList.remove('show-popup');
-}
 
-function populateOrderPlacePopup(selectedItems, totalAmount, deliveryFee, deliveryAddress, formattedEstimatedDeliveryDate) {
-    // Access the elements inside the orderPlacePopup modal and set their content based on the gathered information
-    var opCont = document.querySelector('.opCont');
-    var orderPlacePopup = document.querySelector('.orderPlacePopup');
-    
-    // Clear any previous content
-    orderPlacePopup.innerHTML = '';
+        // Dynamically create the "Place Order" button inside the modal
+        placeOrderButton = document.createElement('button');
+        placeOrderButton.textContent = 'Place Order';
 
-    // Add the content for each selected item
-    selectedItems.forEach(function (item) {
-        var itemInfo = document.createElement('p');
-        itemInfo.textContent = `${item.productName} - Quantity: ${item.quantity} - Total: ₱${item.totalPrice}`;
-        orderPlacePopup.appendChild(itemInfo);
-    });
-
-    // Add other information like total amount, delivery fee, delivery address, and estimated delivery date
-    var deliveryFeeInfo = document.createElement('p');
-    deliveryFeeInfo.textContent = `Delivery Fee: ₱${deliveryFee.toFixed(2)}`;
-
-    var totalAmountInfo = document.createElement('p');
-    totalAmountInfo.textContent = `Total Amount: ₱${totalAmount.toFixed(2)}`;
-
-    var deliveryAddressInfo = document.createElement('p');
-    deliveryAddressInfo.textContent = `Delivery Address: ${deliveryAddress}`;
-
-    var estimatedDeliveryDateInfo = document.createElement('p');
-    estimatedDeliveryDateInfo.textContent = `Estimated Delivery Date: ${formattedEstimatedDeliveryDate}`;
-    
-    orderPlacePopup.appendChild(totalAmountInfo);
-    orderPlacePopup.appendChild(deliveryFeeInfo);
-    orderPlacePopup.appendChild(deliveryAddressInfo);
-    orderPlacePopup.appendChild(estimatedDeliveryDateInfo);
-
-    // Add a close button or any other controls you need
-    var closeButton = document.createElement('button');
-    closeButton.textContent = 'Cancel';
-    var placeOrderButton = document.createElement('button');
-    placeOrderButton.textContent = 'Place Order';
-
-    placeOrderButton.addEventListener('click', function() {
-        // Gather information about selected items, total amount, etc.
-        var selectedItems = [];
-        var checkboxes = document.querySelectorAll('.cartItemCheckbox:checked');
-    
-        checkboxes.forEach(function (checkbox) {
-            var cartItemContainer = checkbox.closest('.categoryContCart');
-            var productIdElement = cartItemContainer.querySelector('.productId');
-    
-            if (productIdElement) {
-                var productId = productIdElement.textContent;
-                var quantity = cartItemContainer.querySelector('.categoryContCartQty span').textContent;
-                var price = parseFloat(checkbox.getAttribute('data-price'));
-                var totalPrice = price * quantity;
-    
-                // Push the information to the selectedItems array
-                selectedItems.push({
-                    PROD_ID: productId, // Update this line
-                    quantity: quantity,
-                    totalPrice: totalPrice.toFixed(2)
-                });
-            }
+        // Add event listener to the dynamically created "Place Order" button
+        placeOrderButton.addEventListener('click', function () {
+            // Call the function to send data to the server
+            sendOrderDataToServer(formData);
         });
-    
-        var totalAmount = parseFloat(document.getElementById('totalToPay').textContent) || 0;
-        var deliveryAddress = document.querySelector('.addressDisp p').textContent;
-    
-        // Make the AJAX request to the PHP script
+        document.querySelector('.orderPlacePopup').appendChild(placeOrderButton);
+
+    });
+
+    function sendOrderDataToServer(formData) {
+        // Send data to the server using AJAX
+        console.log('Sending order data to server...');
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'php/placeOrder.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        var url = 'php/placeorder.php'; // Replace with the actual path to your PHP script
     
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.status === 'success') {
-                    // Order placed successfully
-                    alert('Order placed successfully');
+        xhr.open('POST', url, true);
+        // Do not set Content-Type here, let the browser set it automatically for FormData
     
-                    // Remove the cart items that were ordered
-                    checkboxes.forEach(function (checkbox) {
-                        var cartItemContainer = checkbox.closest('.categoryContCart');
-                        cartItemContainer.remove();
-                    });
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(xhr.responseText); // Log the raw response
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === 'success') {
+                        // Handle success
+                        console.log(response.message);
     
-                    // Reload the page
-                    location.reload();
-                } else {
-                    // Handle the error case
-                    console.error('Failed to place order:', response.message);
+                        // Show an alert
+                        alert('Order placed successfully!');
+    
+                        // Close the orderPlacePopup modal
+                        closeOrderPlacePopup();
+    
+                        // Remove the cart items that were ordered
+                        checkboxes.forEach(function (checkbox) {
+                            var cartItemContainer = checkbox.closest('.categoryContCart');
+                            cartItemContainer.remove();
+                        });
+    
+                        // Reload the page
+                        location.reload();
+                    } else {
+                        // Handle error
+                        console.error(response.message);
+                    }
+                } catch (error) {
+                    console.error('Error parsing JSON:', error);
                 }
             }
         };
     
-        // Prepare the data to send to the server
-        var data = 'selectedItems=' + encodeURIComponent(JSON.stringify(selectedItems)) +
-                    '&totalAmount=' + encodeURIComponent(totalAmount) +
-                    '&deliveryAddress=' + encodeURIComponent(deliveryAddress);
-    
-        // Send the request
-        xhr.send(data);
+        xhr.send(formData);
+    }
 
-        console.log('selectedItems:', selectedItems);
-console.log('totalAmount:', totalAmount);
-console.log('deliveryAddress:', deliveryAddress);
-
-    
-        // Close the orderPlacePopup modal
+    function closeOrderPlacePopup() {
+        // Hide the overlay and popup by removing the 'show-popup' class from the .opCont element
+        var opCont = document.querySelector('.opCont');
         opCont.classList.remove('show-popup');
-    });
-    
-    
-       
+    }
 
-    closeButton.addEventListener('click', function() {
-        // Close the orderPlacePopup modal
-        opCont.classList.remove('show-popup');
-    });
-    orderPlacePopup.appendChild(closeButton);
-    orderPlacePopup.appendChild(placeOrderButton);
+    function populateOrderPlacePopup(selectedItems, totalAmount, deliveryFee, deliveryAddress, formattedEstimatedDeliveryDate) {
+        // Access the elements inside the orderPlacePopup modal and set their content based on the gathered information
+        var opCont = document.querySelector('.opCont');
+        var orderPlacePopup = document.querySelector('.orderPlacePopup');
+    
+        // Clear any previous content
+        orderPlacePopup.innerHTML = '';
+    
+        // Add the content for each selected item
+        selectedItems.forEach(function (item) {
+            var itemInfo = document.createElement('p');
+            itemInfo.textContent = `- ${item.productName} X ${item.quantity} = ₱${item.totalPrice}`;
+            orderPlacePopup.appendChild(itemInfo);
+        });
+    
+        // Add other information like total amount, delivery fee, delivery address, and estimated delivery date
+        var deliveryFeeInfo = document.createElement('p');
+        deliveryFeeInfo.textContent = `Delivery Fee: ₱${deliveryFee.toFixed(2)}`;
+    
+        var totalAmountInfo = document.createElement('p');
+        totalAmountInfo.innerHTML = `<strong>Total to Pay:</strong> ₱${totalAmount.toFixed(2)}`;
 
-    // Show the overlay and popup
-    opCont.classList.add('show-popup');
-}
+    
+        var deliveryAddressInfo = document.createElement('p');
+        deliveryAddressInfo.textContent = `Delivery Address: ${deliveryAddress}`;
+    
+        var estimatedDeliveryDateInfo = document.createElement('p');
+        var estimatedDeliveryDate = new Date();
+        estimatedDeliveryDate.setDate(estimatedDeliveryDate.getDate() + 1);
+
+        var newSpace = document.createElement('br')
+        var newSpace2 = document.createElement('br')
+
+        // Format the date for display
+        var formattedEstimatedDeliveryDate = estimatedDeliveryDate.toDateString();
+
+        estimatedDeliveryDateInfo.textContent = `Estimated Delivery Date: ${formattedEstimatedDeliveryDate}`;
+        
+        orderPlacePopup.appendChild(newSpace);
+        orderPlacePopup.appendChild(deliveryFeeInfo);
+        orderPlacePopup.appendChild(totalAmountInfo);
+        orderPlacePopup.appendChild(newSpace2);
+        orderPlacePopup.appendChild(deliveryAddressInfo);
+        orderPlacePopup.appendChild(estimatedDeliveryDateInfo);
+    
+        // Add a close button or any other controls you need
+        var closeButton = document.createElement('button');
+        closeButton.textContent = 'Cancel';
+        var placeOrderButton = document.createElement('button');
+        placeOrderButton.textContent = 'Place Order';
+    
+        placeOrderButton.addEventListener('click', function () {
+            // Here, you can use the selectedItems array to send data to the server
+            console.log('Selected Items:', selectedItems);
+    
+            // Close the orderPlacePopup modal
+            opCont.classList.remove('show-popup');
+        });
+    
+        closeButton.addEventListener('click', function () {
+            // Close the orderPlacePopup modal
+            opCont.classList.remove('show-popup');
+        });
+    
+        orderPlacePopup.appendChild(closeButton);
+    
+        // Show the overlay and popup
+        opCont.classList.add('show-popup');
+    }
+    
+});
+

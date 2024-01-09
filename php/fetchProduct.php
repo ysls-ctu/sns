@@ -13,7 +13,7 @@ function fetchProductsFromDatabase() {
 
     $products = array();
 
-    $query = "SELECT PROD_ID, PROD_NAME, PROD_IMAGE, PROD_PRICE, PROD_STATUS, PROD_CATEGORY, PROD_SELLER, SELLER_ID FROM product_tbl";
+    $query = "SELECT PROD_ID, PROD_NAME, PROD_IMAGE, PROD_PRICE, PROD_STATUS, PROD_CATEGORY, PROD_SELLER, SELLERPROD_ID FROM product_tbl";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {

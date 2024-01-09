@@ -115,8 +115,8 @@ ini_set('display_errors', 1);
                     foreach ($heartItem as $heartItem) {
                         echo '<div id="cartContainer2" class="categoryContCart" data-product-id="' . $heartItem['PROD_ID'] . '">';
                         // Check if the 'PROD_IMAGE' key exists before using it
-                        if (isset($heartItem['PROD_IMAGE'])) {
-                            echo '  <div class="categoryContCartImg"><img src="data:image/jpg;base64,' . base64_encode($heartItem['PROD_IMAGE']) . '" alt=""></div>';
+                        if (isset($heartItem['PROD_PIC'])) {
+                            echo '<div class="categoryContCartImg"><img src="php/' . $heartItem['PROD_PIC'] . '" alt=""></div>';
                         }
                         echo '  <div class="categoryContCartDet">';
                         echo '    <center>';
@@ -129,7 +129,7 @@ ini_set('display_errors', 1);
                         echo '  </div>';
                         echo '  <div class="categoryContCartQty">';
                         echo '    <center>';
-                        echo '      <button onclick="moveToCart(' . $heartItem['PROD_ID'] . ', -1)">Move To Cart</button>';
+                        echo '<button onclick="removeFromHeart(' . $heartItem['PROD_ID'] . ')">Move To Cart</button>';
                         echo '    </center>';
                         echo '  </div>';
                         echo '  <div class="categoryContCartDelete"><center><i class="fa-solid fa-trash" onclick="removeFromHeart(' . $heartItem['PROD_ID'] . ')"></i></center></div>';

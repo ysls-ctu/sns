@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Create the directory if it doesn't exist
-$targetDir = __DIR__ . "productImages/"; // Adjusted path
+$targetDir = __DIR__ . "/productImages/"; // Adjusted path
 if (!is_dir($targetDir)) {
     mkdir($targetDir, 0755, true);
 }
@@ -28,7 +28,8 @@ $productCategory = $_POST['productCategory'];
 $productImage = ''; // Placeholder for the image path
 
 if ($_FILES['productImage']['error'] == 0) {
-    $filename = strtolower(basename($_FILES['productImage']['name']));
+    $extension = strtolower(pathinfo($_FILES['productImage']['name'], PATHINFO_EXTENSION));
+    $filename = $conn->insert_id . '_' . time() . '.' . $extension; // Auto-incremented filename with timestamp
     $targetFile = $targetDir . $filename;
 
     if (move_uploaded_file($_FILES['productImage']['tmp_name'], $targetFile)) {

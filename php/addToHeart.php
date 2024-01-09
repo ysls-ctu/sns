@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user'])) {
-    $userId = $_SESSION['user']['USER_ID']; 
+    $userId = $_SESSION['user']['USER_ID'];
     $productId = $_POST['productId'];
 
     // Database connection details
@@ -21,8 +21,8 @@ if (isset($_SESSION['user'])) {
         die();
     }
 
-    // Retrieve product details including the image
-    $productQuery = "SELECT * FROM product_tbl WHERE PROD_ID = ?";
+    // Retrieve product image path
+    $productQuery = "SELECT PROD_IMAGE FROM product_tbl WHERE PROD_ID = ?";
     $productStmt = $conn->prepare($productQuery);
     $productStmt->bind_param("i", $productId);
 
@@ -33,14 +33,20 @@ if (isset($_SESSION['user'])) {
         if ($productResult->num_rows > 0) {
             $productData = $productResult->fetch_assoc();
 
-            // Check if the product already exists in the heart list
-            $checkQuery = "SELECT * FROM heart_tbl WHERE USER_ID = ? AND PROD_ID = ?";
-            $checkStmt = $conn->prepare($checkQuery);
-            $checkStmt->bind_param("ii", $userId, $productId);
-            $checkStmt->execute();
-            $checkResult = $checkStmt->get_result();
+            $fetchQuery = "SELECT PROD_PIC FROM heart_tbl WHERE USER_ID = ? AND PROD_ID = ?";
+            $fetchStmt = $conn->prepare($fetchQuery);
 
-            if ($checkResult->num_rows > 0) {
+            if (!$fetchStmt) {
+                $response = array('status' => 'error', 'message' => 'Error preparing SELECT query: ' . $conn->error);
+                echo json_encode($response);
+                die();
+            }
+
+            $fetchStmt->bind_param("ii", $userId, $productId);
+            $fetchStmt->execute();
+            $fetchResult = $fetchStmt->get_result();
+
+            if ($fetchResult->num_rows > 0) {
                 // Product already exists in the heart list, handle as needed
                 $response = array('status' => 'error', 'message' => 'Product already in heart list');
                 echo json_encode($response);
@@ -48,7 +54,7 @@ if (isset($_SESSION['user'])) {
                 // Product doesn't exist in the heart list, insert a new record
                 $insertQuery = "INSERT INTO heart_tbl (USER_ID, PROD_ID, PROD_PIC) VALUES (?, ?, ?)";
                 $insertStmt = $conn->prepare($insertQuery);
-                $insertStmt->bind_param("iis", $userId, $productId, $productData['PROD_PIC']);
+                $insertStmt->bind_param("iis", $userId, $productId, $productData['PROD_IMAGE']);  // Use PROD_IMAGE here
 
                 try {
                     $insertStmt->execute();
@@ -60,7 +66,11 @@ if (isset($_SESSION['user'])) {
                 echo json_encode($response);
             }
 
-            $checkStmt->close();
+            $fetchStmt->close();
+        } else {
+            // Product not found
+            $response = array('status' => 'error', 'message' => 'Product not found');
+            echo json_encode($response);
         }
     } finally {
         $productStmt->close();
