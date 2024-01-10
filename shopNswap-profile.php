@@ -171,7 +171,7 @@ ini_set('display_errors', 1);
                     <div class="itemsCont">
                         <div class="storeName">
                             <p>Store Name</p>
-                            <a href="shopNswap-underConstruction.html">
+                            <a href="shopNswap-underConstruction.php">
                                 <div class="visitSeller">
                                     <span><i class="fa-solid fa-store"></i>&nbsp;Visit Shop</span>
                                 </div>
@@ -427,7 +427,7 @@ ini_set('display_errors', 1);
                 var csButton = document.getElementById('csbtn');
 
                 csButton.addEventListener('click', function () {
-                    window.location.href = 'shopNswap-message.html';
+                    window.location.href = 'shopNswap-message.php';
                 });
             });
 

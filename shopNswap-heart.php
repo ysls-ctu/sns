@@ -129,7 +129,7 @@ ini_set('display_errors', 1);
                         echo '  </div>';
                         echo '  <div class="categoryContCartQty">';
                         echo '    <center>';
-                        echo '<button onclick="removeFromHeart(' . $heartItem['PROD_ID'] . ')">Move To Cart</button>';
+                        echo '<button onclick="removeFromHeart(' . $heartItem['PROD_ID'] . ')">Add To Cart</button>';
                         echo '    </center>';
                         echo '  </div>';
                         echo '  <div class="categoryContCartDelete"><center><i class="fa-solid fa-trash" onclick="removeFromHeart(' . $heartItem['PROD_ID'] . ')"></i></center></div>';
@@ -177,7 +177,7 @@ ini_set('display_errors', 1);
                 </div>
                 <div class="footerCol">
                     <span>About</span>
-                    <a href="shopNswap-team.html">
+                    <a href="shopNswap-team.php">
                         <p>About Us</p>
                     </a>
                     <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
@@ -222,11 +222,22 @@ ini_set('display_errors', 1);
                 </div>
             </div>
         </footer>
-
-        <script src="js/responsiveHeader.js"></script>
-        <script src="js/signout.js"></script>
-        <script src="js/updateRemoveCart.js"></script>
+        
+        <script src="js/addtoCartHeart.js"></script>
+        <script src="js/checkoutDetails.js"></script>
+        <script src="js/checkOutTotal.js"></script>
+        <script src="js/editAddressPopup.js"></script>
+        <script src="js/login.js"></script>
         <script src="js/moveRemoveHeart.js"></script>
+        <script src="js/placeOrder.js"></script>
+        <script src="js/register.js"></script>
+        <script src="js/responsiveHeader.js"></script>
+        <script src="js/review.js"></script>
+        <script src="js/signout.js"></script>
+        <script src="js/slideshow.js"></script>
+        <script src="js/tagCreation.js"></script>
+        <script src="js/updateAddress.js"></script>
+        <script src="js/updateRemoveCart.js"></script>
         </body>
 
 

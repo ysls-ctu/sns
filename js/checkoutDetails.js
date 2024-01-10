@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var productName = cartItemContainer.querySelector('.categoryContCartDet h4').textContent;
             var quantity = cartItemContainer.querySelector('.categoryContCartQty span').textContent;
             var price = parseFloat(checkbox.getAttribute('data-price'));
-            var productId = checkbox.getAttribute('data-product-id'); // Adjust this line based on your HTML
+            var productId = cartItemContainer.getAttribute('data-product-id'); // Adjust this line based on your HTML
+
+            console.log('Product ID:', productId); // Log the productId
         
             var totalPrice = price * quantity;
         
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Send data to the server using AJAX
         console.log('Sending order data to server...');
         var xhr = new XMLHttpRequest();
-        var url = 'php/placeorder.php'; // Replace with the actual path to your PHP script
+        var url = 'php/placeorder.php'; 
     
         xhr.open('POST', url, true);
         // Do not set Content-Type here, let the browser set it automatically for FormData

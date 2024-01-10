@@ -20,23 +20,29 @@ if (isset($_SESSION['user']) && isset($_POST['selectedItems']) && isset($_POST['
         echo json_encode($response);
         die();
     }
+    $conn->autocommit(TRUE);
 
     $orderDate = date('Y-m-d H:i:s');
-    $orderStatus = "TO RECEIVE";
+$orderStatus = "TO RECEIVE";
 
-    $insertOrderQuery = "INSERT INTO ORDER_TBL (ORDER_DATE, ORDER_AMOUNT, ORDER_STATUS, ORDER_ADDRESS, USER_ID) VALUES (?, ?, ?, ?, ?)";
-    $insertOrderStmt = $conn->prepare($insertOrderQuery);
-    $insertOrderStmt->bind_param("ssssi", $orderDate, $totalAmount, $orderStatus, $deliveryAddress, $userId);
+$insertOrderQuery = "INSERT INTO ORDER_TBL (ORDER_DATE, ORDER_AMOUNT, ORDER_STATUS, ORDER_ADDRESS, USER_ID) VALUES (?, ?, ?, ?, ?)";
+$insertOrderStmt = $conn->prepare($insertOrderQuery);
+$insertOrderStmt->bind_param("ssssi", $orderDate, $totalAmount, $orderStatus, $deliveryAddress, $userId);
 
-    error_log('Insert Order Query: ' . $insertOrderQuery);
+error_log('Insert Order Query: ' . $insertOrderQuery);
 
-    if ($insertOrderStmt->execute()) {
-        $orderId = $conn->insert_id;
+if ($insertOrderStmt->execute()) {
+    $orderId = $conn->insert_id;
 
-        foreach ($selectedItems as $item) {
+    foreach ($selectedItems as $item) {
+        error_log('Processing item: ' . print_r($item, true));
+
+        // Check if $item and $orderId are set before using them
+        if (isset($item['productId']) && isset($orderId)) {
             $insertOrderItemQuery = "INSERT INTO ORDERITEM_TBL (OD_QTY, OD_PRICE, PROD_ID, ORDER_ID) VALUES (?, ?, ?, ?)";
             $insertOrderItemStmt = $conn->prepare($insertOrderItemQuery);
             $insertOrderItemStmt->bind_param("idsi", $item['quantity'], $item['totalPrice'], $item['productId'], $orderId);
+
             error_log('Insert Order Item Query: ' . $insertOrderItemQuery);
 
             if ($insertOrderItemStmt->execute()) {
@@ -50,12 +56,17 @@ if (isset($_SESSION['user']) && isset($_POST['selectedItems']) && isset($_POST['
                 $conn->close();
                 die();
             }
+        } else {
+            // Handle the case where $item or $orderId is not set
+            error_log('Product ID or Order ID is not set for the current item');
+            // You may want to log or handle this case appropriately
         }
-
-        $response = array('status' => 'success', 'message' => 'Order placed successfully');
-    } else {
-        $response = array('status' => 'error', 'message' => 'Failed to insert order into ORDER_TBL');
     }
+
+    $response = array('status' => 'success', 'message' => 'Order placed successfully');
+} else {
+    $response = array('status' => 'error', 'message' => 'Failed to insert order into ORDER_TBL');
+}
 
     $insertOrderStmt->close();
     $conn->close();

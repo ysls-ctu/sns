@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         checkboxes.forEach(function (checkbox) {
             var cartItemContainer = checkbox.closest('.categoryContCart');
-            var productId = cartItemContainer.querySelector('.productId').textContent;
+            var productId = checkbox.getAttribute('data-product-id');
             var quantity = cartItemContainer.querySelector('.categoryContCartQty span').textContent;
             var price = parseFloat(checkbox.getAttribute('data-price'));
             var totalPrice = price * quantity;

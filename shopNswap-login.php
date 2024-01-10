@@ -40,7 +40,7 @@
 
                 <div class="botText">
                     <p class="form__text">
-                        <a href="shopNswap-underConstructionSignIn.html" class="form__link">Forgot your password?</a>
+                        <a href="shopNswap-underConstructionSignIn.php" class="form__link">Forgot your password?</a>
                     </p>
 
                     <p class="form__text">
@@ -81,6 +81,38 @@
             <div class="modal-content">
                 <h2>Terms and Conditions</h2>
                 <p>Please read and accept the terms and conditions before proceeding.</p>
+                <div>
+                These Terms and Conditions ("Agreement") are entered into by and between CTU SHOP N' SWAP and Shop Owners [Name of Shop] as of [Date].
+
+1. Payment:
+
+a. [Name of Shop] agree that customers of CTU Shop N' Swap shall make payment upon physical delivery of purchased items.
+
+b. Payment through CTU Shop N' Swap web application is not required and shall not be processed. The application will solely require proof of payment for record-keeping purposes.
+
+2. Proof of Payment:
+
+a. Customer acknowledges that CTU Shop N' Swap web application will only require proof of payment via a picture or screenshot as evidence of the completed transaction.
+
+b. CTU Shop N' Swap web application will not facilitate or process any payment transactions for the items sold by [Name of Shop].
+
+3. Delivery:
+
+a. CTU Shop N Swap shall ensure the safe and timely delivery of purchased items to customers at the agreed-upon location.
+
+b. Upon delivery, customers shall inspect the items and make the payment directly to the respective [Name of Shop].
+
+4. Dispute Resolution:
+
+a. Any disputes arising from transactions facilitated by CTU Shop N' Swap shall be resolved through amicable discussions between CTU Shop N' Swap and the respective [Name of Shop] involved.
+
+5. Governing Law:
+
+a. This Agreement shall be governed by and construed in accordance with the laws of the Philippines.
+
+By utilizing CTU Shop N' Swap and agreeing to have items sold and rented through CTU Shop N' Swap, [Name of Shop] hereby accept and agree to abide by these Terms and Conditions.
+                </div>
+
                 <div class="modal-buttons">
                     <button onclick="acceptTerms()">Accept</button>
                     <button onclick="nevermind()">Never mind</button>

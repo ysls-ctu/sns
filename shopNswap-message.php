@@ -2,27 +2,31 @@
 
 <html lang="en">
 
-    <head>
+<head>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>shopNswap.</title>
-        <link rel="icon" type="image/x-icon" href="shopNswap-images/shopNswapLogo.png">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="shopNswap-home.css">
-        <script src="shopNswap-home.js"></script>
-        
-    </head>
+<title>shopNswap.</title>
+<link rel="icon" type="image/x-icon" href="shopNswap-images/shopNswapLogo.png">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="shopNswap-home.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/addtoCartHeart.js"></script>
+
+</head>
 
     <body id="bodyCont">
 
-        <section id="header">
+    <section id="header">
             <div class="topnav" id="myTopnav">
-                <a href="shopNswap-home.html" class="logo">
-                    <img src="/shopNswap-images/shopNswapLogo2.svg" alt="">
+                <a href="shopNswap-home.php" class="logo">
+                    <img src="shopNswap-images/shopNswapLogo2.svg" alt="">
                 </a>
-                <a href="shopNswap-home.html" class="siteName"><p>shopNswap.</p></a>
+                <a href="shopNswap-home.php" class="siteName"><p>shopNswap.</p></a>
                 <a href="#" class="icon1" onclick="showPopup()">
                     <i class="fa-solid fa-sign-out-alt"></i><span class="extra-content">Sign Out</span>
                 </a>
@@ -37,10 +41,10 @@
                     </div>
                 </div>
 
-                <a href="shopNswap-profile.html" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
-                <a href="shopNswap-cart.html" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
-                <a href="shopNswap-heart.html" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
-                <a href="shopNswap-message.html" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
+                <a href="shopNswap-profile.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="icon1"><i class="fa-solid fa-user"></i><span class="extra-content">User Settings</span></a>
+                <a href="shopNswap-cart.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="icon1"><i class="fa-solid fa-cart-shopping"></i><span class="extra-content">Shop Cart</span></a>
+                <a href="shopNswap-heart.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="icon1"><i class="fa-solid fa-heart"></i><span class="extra-content">Liked Items</span></a>
+                <a href="shopNswap-message.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="icon1"><i class="fa-solid fa-envelope"></i><span class="extra-content">Messages</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                   <i class="fa fa-bars"></i>
                 </a>
@@ -48,7 +52,7 @@
         </section>
 
         <section id="banner">
-            <a href="shopNswap-underConstruction.html" class="container1">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="container1">
                 <div class="col1">
                     <i class="fas fa-share"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -59,7 +63,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-tags"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -70,7 +74,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-credit-card"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -81,7 +85,7 @@
                     </center>
                 </div>
             </a>
-            <a href="shopNswap-underConstruction.html" class="container2">
+            <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>" class="container2">
                 <div class="col1">
                     <i class="fa-solid fa-gift"></i>&nbsp;&nbsp;&nbsp;
                 </div>
@@ -113,7 +117,7 @@
         <footer class="footerCont">
             <div class="footerCont2">
                 <div class="footerCol">
-                    <a href="shopNswap-home.html">
+                    <a href="shopNswap-home.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <div class="footerColHead">
                             <img src="shopNswap-images/shopNswapLogo2.svg" alt="">
                             <p>shopNswap.</p>
@@ -147,40 +151,40 @@
                 </div>
                 <div class="footerCol">
                     <span>About</span>
-                    <a href="shopNswap-team.html">
+                    <a href="shopNswap-team.php">
                         <p>About Us</p>
                     </a>
-                    <a href="shopNswap-underConstruction.html">
+                    <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Delivery Information</p>
                     </a>
-                    <a href="shopNswap-underConstruction.html">
+                    <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Shipping Rates and Policies</p>
                     </a>
-                    <a href="shopNswap-underConstruction.html">
+                    <a href="shopNswap-underConstruction.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Privacy Policy</p>
                     </a>
-                    <a href="shopNswap-tnc.html">
+                    <a href="shopNswap-tnc.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Terms and Conditions</p>
                     </a>
-                    <a href="shopNswap-contactus.html">
+                    <a href="shopNswap-contactus.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Contact Us</p>
                     </a>
                 </div>
                 <div class="footerCol">
                     <span>Account</span>
-                    <a href="shopNswap-profile.html">
+                    <a href="shopNswap-profile.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Account Settings</p>
                     </a>
-                    <a href="shopNswap-profile.html">
+                    <a href="shopNswap-profile.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>Track My Order</p>
                     </a>
-                    <a href="shopNswap-cart.html">
+                    <a href="shopNswap-cart.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>View Cart</p>
                     </a>
-                    <a href="shopNswap-heart.html">
+                    <a href="shopNswap-heart.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>View Heart List</p>
                     </a>
-                    <a href="shopNswap-cart.html">
+                    <a href="shopNswap-cart.php?userID=<?php echo isset($_GET['userID']) ? htmlspecialchars($_GET['userID']) : ''; ?>">
                         <p>View Orders</p>
                     </a>
                 </div>
@@ -192,6 +196,22 @@
                 </div>
             </div>
         </footer>
+        
+        <script src="js/addtoCartHeart.js"></script>
+        <script src="js/checkoutDetails.js"></script>
+        <script src="js/checkOutTotal.js"></script>
+        <script src="js/editAddressPopup.js"></script>
+        <script src="js/login.js"></script>
+        <script src="js/moveRemoveHeart.js"></script>
+        <script src="js/placeOrder.js"></script>
+        <script src="js/register.js"></script>
+        <script src="js/responsiveHeader.js"></script>
+        <script src="js/review.js"></script>
+        <script src="js/signout.js"></script>
+        <script src="js/slideshow.js"></script>
+        <script src="js/tagCreation.js"></script>
+        <script src="js/updateAddress.js"></script>
+        <script src="js/updateRemoveCart.js"></script>
 
         <script>
             function toggleMenu() {

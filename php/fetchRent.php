@@ -13,7 +13,7 @@ function fetchRentFromDatabase() {
 
     $rent = array();
 
-    $query = "SELECT RENT_ID, RENT_NAME, RENT_IMAGE, RENT_USER, USER_ID FROM rent_tbl";
+    $query = "SELECT RENT_ID, RENT_NAME, RENT_IMAGE, RENT_OWNER, RENT_PRICE, USER_ID FROM rent_tbl";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {

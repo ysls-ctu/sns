@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>shopNswap.</title>
-    <link rel="icon" type="image/x-icon" href="shopNswap-images/shopNswapLogo.png">
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="shopNswap-home.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-</head>
+        <title>shopNswap.</title>
+        <link rel="icon" type="image/x-icon" href="shopNswap-images/shopNswapLogo.png">
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="shopNswap-home.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="js/addtoCartHeart.js"></script>
+        
+    </head>
 
     <body id="bodyCont">
         <section id="header">
@@ -138,27 +139,77 @@
                     echo '<div class="productCont">';
                     
                     // Display the image using the file path
-                    echo '<img src="' . $rent['RENT_IMAGE'] . '" alt="">';
+                    echo '<img src="php/' . $rent['RENT_IMAGE'] . '" alt="">';
                     
                     echo '<h4>' . $rent['RENT_NAME'] . '</h4>';
-                    echo '<p>' . $rent['RENT_USER'] . '</p>';
-                    
+                    echo '<p>' . $rent['RENT_OWNER'] . '</p>';
+                    echo '<span>₱' . $rent['RENT_PRICE'] . ' per hour</span>';
                     echo '<div class="$rent">';
-                    echo '<div class="iconOpt" onclick="addToCart(' . $rent['USER_ID'] . ')"><center><p>Send Rental Request</p></center></div>';
+                    echo '<div class="iconOpt" onclick="sendRentalRequest(' . $rent['USER_ID'] . ')"><center><p>Send Rental Request</p></center></div>';
                     echo '</div></div>';
+
+                    
                 }
                 
             ?>
         </section>
 
-        <section id="ListContainer">
-            <button class="ListButton" onclick="redirectTo('your-link-here')">
+        <div class="overlayRentRequest" id="overlayRentRequest"></div>
+    
+            <div class="modalRentRequest" id="modalRentRequest">
+                <form id="productForm" onsubmit="submitRentReq(); return false;">
+                    <label for="rentreqDur">Rental Duration (in hour/s): </label>
+                    <input type="number" id="rentreqDur" name="rentreqDur" step="0.01" required>
+    
+                    <label for="rentreqComment">Enter comment/s for the owner:</label>
+                    <textarea name="rentreqComment" id="rentreqComment" cols="30" rows="10" required></textarea>
+
+                    <button type="submit">Submit Request</button>
+                </form>
+                <button onclick="closeModal()">Close</button>
+            </div>
+
+
+            <section id="ListContainer">
+            <button class="ListButton" onclick="openModal()">
                 <h1>List an item for rent</h1>
             </button>
-            <button class="ListButton" onclick="redirectTo('shopNswap-underConstruction.php')">
-                <h1>Manage rental items</h1>
-            </button>
-        </section>
+                <button class="ListButton" onclick="redirectTo('shopNswap-underConstruction.php')">
+                    <h1>Manage items for rent</h1>
+                </button>
+            </section>
+    
+            <div class="overlayRent" id="overlayRent"></div>
+    
+            <div class="modalRent" id="modalRent">
+                <form id="productForm" onsubmit="submitRentList(); return false;">
+                    <label for="rentName">Product Name:</label>
+                    <input type="text" id="rentName" name="rentName" required>
+    
+                    <label for="rentImage">Product Image:</label>
+                    <input type="file" id="rentImage" name="rentImage" accept="image/*" required>
+    
+                    <label for="rentPrice">Rental Rate (per hour):</label>
+                    <input type="number" id="rentPrice" name="rentPrice" step="0.01" required>
+    
+                    <label for="rentCategory">Product Category:</label>
+                    <select id="rentCategory" name="rentCategory" required>
+                        <option value="LAPTOP">LAPTOP</option>
+                        <option value="CALCULATOR">CALCULATOR</option>
+                        <option value="OTHERS">OTHERS</option>
+                    </select>
+    
+                    <button type="submit">Submit</button>
+                </form>
+                <button onclick="closeModal()">Close</button>
+            </div>
+
+
+
+
+
+
+
 
         <footer class="footerCont">
             <div class="footerCont2">
@@ -258,6 +309,85 @@
         <script src="js/tagCreation.js"></script>
         <script src="js/updateAddress.js"></script>
         <script src="js/updateRemoveCart.js"></script>
+
+        <script>
+            function openModal() {
+                document.getElementById('overlayRent').style.display = 'block';
+                document.getElementById('modalRent').style.display = 'block';
+            }
+
+            function closeModal() {
+                document.getElementById('overlayRent').style.display = 'none';
+                document.getElementById('modalRent').style.display = 'none';
+                document.getElementById('overlayRentRequest').style.display = 'none';
+                document.getElementById('modalRentRequest').style.display = 'none';
+            }
+
+            function sendRentalRequest() {
+                document.getElementById('overlayRentRequest').style.display = 'block';
+                document.getElementById('modalRentRequest').style.display = 'block';
+            }
+
+            function submitRentList() {
+                var formData = new FormData();
+                formData.append('rentName', document.getElementById('rentName').value);
+                formData.append('rentPrice', document.getElementById('rentPrice').value);
+                formData.append('rentImage', document.getElementById('rentImage').files[0]);
+                formData.append('rentCategory', document.getElementById('rentCategory').value);
+
+                // Add your AJAX code to submit form data to PHP script and insert into the database
+                fetch('php/addRent.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    if (data.success) {
+                        alert('Rental product listed successfully!');
+                        location.reload(); // Reload the page
+                    } else {
+                        alert('Failed to add rental product. Error: ' + data.error);
+                    }
+                    closeModal();
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            function submitRentReq() {
+                var formData = new FormData();
+                formData.append('rentreqDur', document.getElementById('rentreqDur').value);
+                formData.append('rentreqComment', document.getElementById('rentreqComment').value);
+
+                // Add your AJAX code to submit form data to PHP script and insert into the database
+                fetch('php/addRentRequest.php', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    if (data.success) {
+                        alert('Rent Request submitted successfully!');
+                        location.reload(); // Reload the page
+                    } else {
+                        alert('Failed to send rent request. Error: ' + data.error);
+                    }
+                    closeModal();
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        </script>
 
         <script>
             function toggleMenu() {
